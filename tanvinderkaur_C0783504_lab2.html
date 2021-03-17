@@ -1,0 +1,72 @@
+<html>
+<font size="8" color="green">Final test lab</font><br><br>
+
+<main id="remove-area">
+    Number of rows: <input type="text" id="t1" /><br><br>
+    Number of cols: <input type="text" id="t2" /><br><br>
+    <button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+</main>
+
+<button id="b2" onclick="addColumn()">Add Column</button>
+<button id="b3" onclick="addRow()">Add Row</button>
+<table id ="table"></table>
+
+<script type="text/javascript">
+    
+
+    function generateTable(){
+        document.createElement("head");
+        let modify = document.createElement("style")
+        modify.innerText = ` table{border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+     th, td {
+    padding: 12px 15px;
+}
+ tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    color: #009879;
+}`
+
+        document.head.appendChild(modify)
+     var row_entries = document.getElementById("t1").value;
+      var column_entries = document.getElementById("t2").value;
+        let realTable = document.getElementById("table")
+        for (let i = 0; i < row_entries; i++) {
+            var tr = document.createElement("tr");
+             tr.setAttribute("id", i);
+            for (let j = 0; j < column_entries; j++) {
+                var td = document.createElement("td");
+                 var Node = document.createTextNode("Row "+i+" Col "+j);
+                 td.appendChild(Node);
+                 tr.appendChild(td);
+            }
+            realTable.appendChild(tr);
+        }
+        document.getElementById("remove-area").remove()
+    }
+
+    function addRow(){
+        let own_Table = document.getElementById("table");
+        var t = document.createElement("tr");
+        let z = t.insertCell(0)
+        z.innerHTML = "Row "+document.getElementById("table").rows.length+" Col 0"
+        table.appendChild(t);
+    }
+
+    function addColumn(){
+        let Tan_Table = document.getElementById("table");
+        let x = Tan_Table.rows.length -1
+        let tan_Col = Tan_Table.rows[x].cells.length
+        var create_element = document.createElement("td");
+                 var my_Node = document.createTextNode("Row "+ x +" Col "+tan_Col);
+                 create_element.appendChild(my_Node);
+                 Tan_Table.rows[x].appendChild(create_element);
+    }
+
+</script>
+</html>
